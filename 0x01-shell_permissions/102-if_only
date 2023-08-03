@@ -1,18 +1,3 @@
 #!/bin/bash
-
-file="hello"
-owner_is_guillaume="guillaume"
-owner_is_betty="betty"
-
-# Check if the file is owned by guillaume
-if [ "$(stat -c '%U' "$file")" != "$owner_is_guillaume" ]; then
-   echo "Owner is not $owner_is_guillaume"
-
-else
- #change owner
- chown $owner_is_betty $file
- echo "Owner of $file changed to $owner_is_betty"
-    
-fi
-
+if [ "$(stat -c '%U' "hello")" =="guillaume" ]; then chown "betty" hello
 
