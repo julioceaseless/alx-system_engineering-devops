@@ -1,2 +1,3 @@
-#!/bin/bash
-if [ "$(stat -c '%U' "hello")" =="guillaume" ]; then chown "betty" hello
+1   #!/bin/bash
+  1 if [ "$(stat -c %U hello)" = "julio" ]; then chown betty hello; fi
+
