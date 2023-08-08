@@ -1,0 +1,6 @@
+#!/bin/bash
+for i in {a..z}; do
+    for n in {a..z} do
+        [["$i$n" != "oo"]] && echo "$i$n"
+    done
+done
