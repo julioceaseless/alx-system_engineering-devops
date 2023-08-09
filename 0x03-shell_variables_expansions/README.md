@@ -1,4 +1,4 @@
-##SHELL, INIT FILES, VARIABLES, AND EXPANSIONS
+<h2>SHELL, INIT FILES, VARIABLES, AND EXPANSIONS</h2>
 0. Create a script that creates an alias.
 Name: ls
 Value: rm *
