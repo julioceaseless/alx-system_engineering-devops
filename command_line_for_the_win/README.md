@@ -16,7 +16,7 @@ command: `sftp username@hostname`
 
 _Step 2: Navigate to the remote directory_
 
-Once connected to the sandbox environment, I navigated to the remote directory where I want to upload the files.
+Once connected to the sandbox environment, I navigated to the remote directory where I want to upload the files. The directory was created beforehand.
 
 command: `cd root/alx-system_engineering-devops/command_line_for_the_win/`
 
