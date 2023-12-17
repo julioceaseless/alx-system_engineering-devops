@@ -12,6 +12,8 @@ _Step 1: Connect SFTP to the sandbox environment_
 
 Using the SFTP credentials (username, hostname, and password) on the intranet, I connected to the sandox via the terminal of my Ubuntu Machine
 
+command: `sftp username@hostname`
+
 _Step 2: Navigate to the remote directory_
 
 Once connected to the sandbox environment, I navigated to the remote directory where I want to upload the files.
