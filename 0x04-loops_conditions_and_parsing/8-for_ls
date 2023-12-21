@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This bash script displays the content of the current
+# directory in list format without the prefix number
+
+for file in *
+do
+    if [[ $file != .* ]]
+    then
+        truncated_name=$(echo "$file" | cut -d'-' -f2-)
+
+        echo "$truncated_name"
+    fi
+done
+
