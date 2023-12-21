@@ -8,7 +8,8 @@ do
 	if [ "$num" -eq 9 ]
 	then
 		echo "Hi"
-		
-	echo "Best School"
+	else
+		echo "Best School"
+	fi
 	((num++))
 done
