@@ -5,11 +5,11 @@ num=1
 
 while [ $num -le 20 ]
 do
+	echo $num
 	case $num in
 		4) echo "bad luck from China";;
 		9) echo "bad luck from Japan";;
 		17) echo "bad luck from Italy"
 	esac
-	echo $num
 	((num++))
 done
