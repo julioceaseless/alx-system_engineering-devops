@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Use awk command to read log files
+
+#path to the logfile
+
+log_file="apache-access.log"
+
+if [ -e "$log_file" ]
+then
+	awk '{print $1, $9}' "$log_file"
+else
+	echo "Log file not found: $log_file"
+fi
+
