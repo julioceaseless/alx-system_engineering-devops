@@ -15,7 +15,5 @@ fi
 while IFS=":" read -r username _ userid _ _ home_directory _
 do
     # Display the required information
-    echo "Username: $username"
-    echo "User ID: $userid"
-    echo "Home Directory: $home_directory"
+    echo "$username:$userid:$home_directory"
 done < "$passwd_file"
