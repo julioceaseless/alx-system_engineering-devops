@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# play with traps
+
+file=/var/run/myscript.pid
+
+# handle SIGTERM
+sigterm_trap()
+{
+	echo "I hate the kill command"
+	sudo rm $file
+	exit
+}
+# handle SIGINT
+sigint_trap()
+{
+	echo "Y U no love me?!"
+}
+
+# handle SIGQUIT
+sigquit_trap()
+{
+	sudo rm $file
+	exit
+}
+
+# create file and store pid of self
+create_file()
+{
+	sudo bash -c "echo $$ > $file"
+}
+trap "sigterm_trap" SIGTERM
+trap "sigint_trap" SIGINT
+trap "sigquit_trap" SIGQUIT
+
+create_file
+while 'true'
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
