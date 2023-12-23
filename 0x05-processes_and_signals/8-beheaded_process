@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# search and terminate a process using kill
+
+pkill -9 -f "./7-highlander"
