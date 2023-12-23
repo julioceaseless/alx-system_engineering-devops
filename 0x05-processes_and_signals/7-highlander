@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# print "To infinity and beyond" after 2 seconds indefinitely
+# also print "I am invincible" when receiving a sigterm signal
+
+# function to shout loud
+resist_kill()
+{
+	echo "I am invincible!!!"
+}
+
+# set trap for SIGTERM
+trap "resist_kill" SIGTERM
+
+# infinite while loop
+while 'true'
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
+
