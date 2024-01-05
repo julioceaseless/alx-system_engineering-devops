@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
-
-if [ "$EUID" -ne 0 ]
-then
-	echo "Please run as root"	
-exit
-fi
+# listen to port 98 localhost
 
 port=98
 nc -lvp "$port"
