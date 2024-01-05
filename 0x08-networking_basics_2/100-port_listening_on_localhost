@@ -2,4 +2,4 @@
 # listen to port 98 localhost
 
 port=98
-nc -lvp "$port"
+nc -l "$port"
