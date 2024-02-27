@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
+# script installs nginx, configures nginx to listen to port 80,
+# and adds content to the index page
 
 # update packages
-sudo apt install update
+sudo apt update
 
 # install nginx
 sudo apt install -y nginx
