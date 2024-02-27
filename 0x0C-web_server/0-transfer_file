@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Check if correct number of arguments is passed
 if [ "$#" -lt 4 ]
 then
