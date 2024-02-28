@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# install apache, configure, and restarts
+
+# update packages
+sudo apt-get update
+
+# install updates
+sudo apt-get -y upgrade
+
+# install apache webserver
+sudo apt-get -y install apache2
+
+# modify the apache configuration file
+sed -i 's,'"#ServerRoot"','"ServerRoot"',' /etc/apache2/apache2.conf
+
+# restart service
+sudo service apache2 restart
