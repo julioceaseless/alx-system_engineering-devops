@@ -10,7 +10,7 @@ fi
 ip=$1
 
 # Send GET request to the URL and store status code in a variable
-status_code=$(curl -s -o response.txt -w "%{http_code}" "$1")
+status_code=$(curl -s -o response.txt -w "%{http_code}" "$ip")
 
 if [ "$status_code" -ne 200 ]; then
 	rm -f response.txt
@@ -21,7 +21,7 @@ fi
 response_body=$(tail -n1 response.txt)
 
 # display response
-echo $response_body
+echo "$response_body"
 
 # remove file
 rm -f response.txt
