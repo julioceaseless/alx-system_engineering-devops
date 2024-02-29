@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# script installs nginx, configures nginx to listen to port 80,
+# and adds content to the index page
+
+# update packages
+sudo apt update
+
+# install nginx
+sudo apt install -y nginx
+
+# configure nginx to listen to port 80
+sudo sed -i 's/listen (\[?::]?[0-9]+);/listen 80;/g' /etc/nginx/sites-enabled/default
+
+# restart nginx to apply configuration changes
+sudo service nginx restart
+
+# modify content of landing page
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+
+sudo sed -i '/^}$/i \ \n\tlocation \/redirect_me {return 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;}' /etc/nginx/sites-available/default
+sudo sed -i '/^}$/i \ \n\tlocation @404 {return 404 "Ceci n'\''est pas une page\\n";}' /etc/nginx/sites-available/default
+sudo sed -i 's/=404/@404/g' /etc/nginx/sites-available/default
