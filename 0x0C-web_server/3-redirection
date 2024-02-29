@@ -2,6 +2,9 @@
 # script installs nginx, configures nginx to listen to port 80,
 # and adds content to the index page
 
+# remove exiting nginx installation
+sudo apt-get purge nginx nginx-common -y
+
 # update packages
 sudo apt update
 
@@ -17,7 +20,7 @@ sudo service nginx restart
 # modify content of landing page
 echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
 
-sed -i '/^ *location \/redirect_me {/d;/^ *} *$/i \
-    location \/redirect_me {\
-        return 301 https:\/\/www.example.com\/new_page;\
-    }' default
+sudo sed -i '/^}$/i \ \n\tlocation \/redirect_me {return 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;}' /etc/nginx/sites-available/default
+
+# start nginx 
+sudo service nginx start
