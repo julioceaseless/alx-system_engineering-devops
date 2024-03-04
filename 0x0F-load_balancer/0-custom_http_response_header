@@ -20,6 +20,8 @@ sudo service nginx restart
 # modify content of landing page
 echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
 
+# get host name
+host_name=cat /etc/hosts > /dev/null | head -n 1 | cut -d ' ' -f 3
+echo $host_name
 # add custom header
 curl -v -H "X-Served-By: web-02" 0.0.0.0
-
