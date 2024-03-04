@@ -21,7 +21,7 @@ sudo service nginx restart
 echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
 
 # get host name
-host_name=cat /etc/hosts > /dev/null | head -n 1 | cut -d ' ' -f 3
-echo $host_name
+host_name=$(sudo cat /etc/hosts | head -n 1 | cut -d ' ' -f 3)
+
 # add custom header
-curl -v -H "X-Served-By: web-02" 0.0.0.0
+curl -v -H "X-Served-By: $host_name" 0.0.0.0
