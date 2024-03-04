@@ -14,14 +14,8 @@ sudo apt install -y nginx
 # configure nginx to listen to port 80
 sudo sed -i 's/^\(listen\s*.*\):[0-9]\+/80/' /etc/nginx/sites-enabled/default
 
+# add custom header
+sudo sed -i "/http {/a\         add_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
+
 # restart nginx to apply configuration changes
 sudo service nginx restart
-
-# modify content of landing page
-echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
-
-# get host name
-host_name=$(sudo cat /etc/hosts | head -n 1 | cut -d ' ' -f 3)
-
-# add custom header
-curl -v -H "X-Served-By: $host_name" 0.0.0.0
