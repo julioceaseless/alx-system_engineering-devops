@@ -10,8 +10,11 @@ Example: `./0-world_wide_web nandgeek.tech`
 **output**
 
 `The subdomain www.nandgeek.tech is a A record and points to 162.215.226.6`
+
 `The subdomain lb-01.nandgeek.tech is a A record and points to 54.87.3.184`
+
 `The subdomain web-01.nandgeek.tech is a A record and points to 162.215.226.6`
+
 `The subdomain web-02.nandgeek.tech is a A record and points to 54.237.54.104`
 
 2) With two arguments
