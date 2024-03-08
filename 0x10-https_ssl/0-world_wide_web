@@ -4,15 +4,14 @@
 subdomains=("www" "lb-01" "web-01" "web-02")
 func () {
 	# check if both arguments are passed
-	if [ "$2" ]
+	if [ "$#" -eq 2 ]
 	then
 		# Use dig to get the IP addresses for each subdomain and format the output
 		record=$(dig "$2"."$1" | grep -A1 "ANSWER SECTION" | tail -n 1)
 		echo "$record" | awk '{sub(/\.$/, "", $1); print "The subdomain "$1" is a "$4" record and points to "$5}'
 
-	
 	# check if only the first argument is passed
-	elif [ "$1" ]
+	elif [ "$#" -eq 1 ]
 	then
 		# loop through each subdomain
 		for subdomain in "${subdomains[@]}"
@@ -22,5 +21,8 @@ func () {
 			echo "$record" | awk '{sub(/\.$/, "", $1); print "The subdomain "$1" is a "$4" record and points to "$5}'
 
 		done
+	else
+		return
 	fi
 }
+func "$@"
