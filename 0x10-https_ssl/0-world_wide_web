@@ -8,8 +8,7 @@ func () {
 	then
 		# Use dig to get the IP addresses for each subdomain and format the output
 		record=$(dig "$2"."$1" | grep -A1 "ANSWER SECTION" | tail -n 1)
-		echo "$record" | awk '{sub(/\.$/, "", $1); print "The subdomain "$1" is a "$4" record and points to "$5}'
-
+		echo "$record" | awk -v subdomain="$2" '{sub(/\.$/, "", $1); print "The subdomain " subdomain " is a " $4 " record and points to " $5}'
 	# check if only the first argument is passed
 	elif [ "$1" ]
 	then
