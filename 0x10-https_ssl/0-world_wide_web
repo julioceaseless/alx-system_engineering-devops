@@ -18,7 +18,7 @@ func () {
 		do
 			# Use dig to get the IP addresses for each subdomain and format the output
 			record=$(dig "$subdomain"."$1" | grep -A1 "ANSWER SECTION" | tail -n 1)
-			echo "$record" | awk '{sub(/\.$/, "", $1); print "The subdomain "$1" is a "$4" record and points to "$5}'
+			echo "$record" | awk -v subdomain="$subdomain" '{sub(/\.$/, "", $1); print "The subdomain " subdomain " is a " $4 " record and points to " $5}'
 
 		done
 	else
