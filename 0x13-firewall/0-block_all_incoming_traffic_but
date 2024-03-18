@@ -2,7 +2,7 @@
 # install firewall and set up some rules
 
 # update package libraries
-sudo apt update
+sudo apt update -y
 
 # install uncomplicated firewall
 sudo apt install ufw
@@ -13,7 +13,7 @@ sudo ufw default deny incoming
 # allow all outgoing traffic
 sudo ufw default allow outgoing
 
-# allow ports
+# allow these tcp ports
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 sudo ufw allow 22/tcp
@@ -25,4 +25,4 @@ sudo ufw show added
 sudo ufw enable
 
 # check status
-sudo ufw status
+sudo ufw status verbose
