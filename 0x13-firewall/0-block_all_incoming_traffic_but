@@ -23,3 +23,6 @@ sudo ufw show added
 
 # enable firewall
 sudo ufw enable
+
+# check status
+sudo ufw status
