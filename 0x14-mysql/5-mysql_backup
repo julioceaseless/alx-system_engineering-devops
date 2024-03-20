@@ -6,7 +6,7 @@ month=$(date +%m)
 year=$(date +%Y)
 
 # backup all databases
-sudo mysqldump -u root -p "$1" --all-databases > backup.sql
+sudo mysqldump -u root -p"$1" --all-databases > backup.sql
 
 # create a tar.gz archive
 tar -czvf "$day"-"$month"-"$year".tar.gz backup.sql
