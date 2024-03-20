@@ -1,0 +1,37 @@
+SHOW GRANTS for 'holberton_user'@'localhost';
+REVOKE ALL PRIVILEGES ON *.* FROM 'holberton_user'@'localhost';
+DROP USER 'holberton'@'localhost';
+CREATE USER 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
+FLUSH PRIVILEGES;
+
+GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
+GRANT ALL PRIVILEGES ON *.* TO 'holberton_user'@'localhost';
+
+
+---- create replica user -----
+CREATE USER 'replica_user'@'%' IDENTIFIED WITH mysql_native_password BY 'projectcorrection280hbtn';
+GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
+GRANT SELECT ON mysql.user TO 'holberton_user'@'localhost';
+
+# show users and their privileges on the replication slave
+SELECT user, Repl_slave_priv FROM mysql.user;
+
+sudo sed -n -i 's/bind/# bind/p' /etc/mysql/mysql.conf.d/mysqld.cnf
+sudo sed '/# bind/ i "server-id		= 1"' /etc/mysql/mysql.conf/mysql.cnf
+
+
+---------start replica-------
+CHANGE MASTER TO
+SOURCE_HOST='100.25.24.173',
+SOURCE_USER='replica_user',
+SOURCE_PASSWORD='projectcorrection280hbtn',
+SOURCE_LOG_FILE='mysql-bin.000287',
+SOURCE_LOG_POS=154;
+
+------ start slave ---------
+CHANGE MASTER TO
+    MASTER_HOST = 'master_ip_address',
+    MASTER_USER = 'replica_user',
+    MASTER_PASSWORD = 'projectcorrection280hbtn',
+    MASTER_LOG_FILE = 'mysql-bin.000287',
+    MASTER_LOG_POS = 154;
