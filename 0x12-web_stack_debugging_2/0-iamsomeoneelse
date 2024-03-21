@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Check if the username argument is provided
+if [ $# -ne 1 ]
+then
+	echo "Usage: $0 <username>"
+	exit 1
+fi
+
+# Assign the username argument to a variable
+username=$1
+
+# create user
+sudo useradd "$username"
+
+# Run the whoami command under the specified user
+sudo -u "$username" whoami
