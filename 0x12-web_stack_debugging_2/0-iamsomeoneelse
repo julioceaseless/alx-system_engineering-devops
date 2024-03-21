@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # run software as another user
 
 if [ $# -ne 1 ]
