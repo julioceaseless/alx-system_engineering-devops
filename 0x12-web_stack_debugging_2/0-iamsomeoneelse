@@ -11,7 +11,7 @@ fi
 username=$1
 
 # create user
-sudo useradd "$username"
+# sudo useradd "$username"
 
 # Run the whoami command under the specified user
 sudo -u "$username" whoami
