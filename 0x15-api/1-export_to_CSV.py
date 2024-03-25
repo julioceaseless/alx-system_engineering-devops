@@ -3,9 +3,9 @@
 script uses REST API to retrieve employee information
 using a given ID
 """
+import csv
 import requests
 import sys
-import csv
 
 
 def records(dict_list, userid, username):
