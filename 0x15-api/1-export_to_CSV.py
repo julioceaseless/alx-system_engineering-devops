@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
     USER_URL = f"https://jsonplaceholder.typicode.com/users/{user_id}"
     TODO_URL = f"https://jsonplaceholder.typicode.com/todos/?userID={user_id}"
-    file_path = "USER_ID.csv"
+    file_path = f"{user_id}.csv"
     total_tasks = 0
     # get user's username
     response_user = requests.get(USER_URL)
