@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
     # write to csv file
     with open(file_path, "w", newline="") as csv_file:
-        writer = csv.writer(csv_file)
+        writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
         writer.writerows(data_records)
 
     print("csv file written successfully")
