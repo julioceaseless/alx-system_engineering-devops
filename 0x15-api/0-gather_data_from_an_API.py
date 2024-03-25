@@ -69,8 +69,8 @@ if __name__ == "__main__":
     # retrieve completed tasks
     completed_tasks = tasks_completed(tasks, user_id, "completed", True)
 
-    print(f"Employee {user_name} is done with tasks)", end="")
-    print("({completed_tasks}/{total_tasks}):")
+    print(f"Employee {user_name} is done with tasks", end="")
+    print(f"({completed_tasks}/{total_tasks}):")
 
     # list all completed tasks
     list_titles(tasks, user_id, "completed", True)
