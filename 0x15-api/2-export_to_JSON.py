@@ -59,4 +59,3 @@ if __name__ == "__main__":
     # write JSON to file
     with open(file_path, "w") as json_file:
         json.dump(json_data, json_file)
-    print("JSON data successfully written")
