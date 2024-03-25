@@ -8,7 +8,7 @@ import requests
 import sys
 
 
-def records(dict_list, userid, username):
+def records(tasks_dict, users_dict, userid, username):
     """
     counts the number of tasks completed by user
     @dict_list: list of dictionary or json data
@@ -19,12 +19,12 @@ def records(dict_list, userid, username):
     data_record = {}
     list_of_records = []
     dict_of_records = {}
-    for _dict in dict_list:
+    for _dict in tasks_dict:
         if _dict["userId"] == userid:
             data_record = {
                     "task": _dict['title'],
                     "completed": _dict['completed'],
-                    "username": _dict['title']
+                    "username": users_dict['username']
                     }
             list_of_records.append(data_record)
     dict_of_records[userid] = list_of_records
@@ -45,16 +45,15 @@ if __name__ == "__main__":
     total_tasks = 0
     # get user's username
     response_user = requests.get(USER_URL)
-    username = response_user.json()["username"]
+    users = response_user.json()
+    username = users["username"]
 
     # get tasks completed by user
     response_tasks = requests.get(TODO_URL)
     tasks = response_tasks.json()
 
-    data_records = records(tasks, user_id, username)
-
     # JSONify the dictionary
-    json_data = records(tasks, user_id, username)
+    json_data = records(tasks, users, user_id, username)
 
     # write JSON to file
     with open(file_path, "w") as json_file:
