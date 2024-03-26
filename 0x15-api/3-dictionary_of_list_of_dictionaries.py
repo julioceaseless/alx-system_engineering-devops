@@ -6,6 +6,7 @@ using a given ID
 import json
 import requests
 import sys
+import time
 
 
 def records(tasks_dict, users_dict):
@@ -30,7 +31,6 @@ def records(tasks_dict, users_dict):
                 # store entries in a list
                 list_of_tasks.append(user_task_dict)
         dict_of_lists[user_id] = list_of_tasks
-    print(dict_of_lists)
     return dict_of_lists
 
 
