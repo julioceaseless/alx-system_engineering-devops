@@ -10,7 +10,7 @@ def top_ten(subreddit):
     '''List 10 hot posts'''
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     headers = {'User-Agent': 'app/v1.00', 'Cache-Control': 'no-cache'}
-    res = requests.get(url, headers=headers)
+    res = requests.get(url, headers=headers, allow_redirects=False)
     if (res.status_code == 200 and not res.is_redirect):
         try:
             dict_list = res.json()['data']['children']
