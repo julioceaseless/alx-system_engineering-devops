@@ -8,10 +8,14 @@ import requests
 
 def number_of_subscribers(subreddit):
     '''Retrieve the number of subscribers'''
-    res = requests.get(f'https://reddit.com/r/{subreddit}/about.json')
-    if (res.status_code == 200):
+    headers = {'User-Agent': 'app/v1.0.0'}
+    url = "https://reddit.com/r/{}/about.json".format(subreddit)
+    res = requests.get(url, headers=headers)
+    if (res.status_code == 200 and not res.is_redirect):
         # print subscriber count
         try:
             return int(res.json()['data']['subscribers'])
         except KeyError:
             return 0
+    else:
+        return 0
