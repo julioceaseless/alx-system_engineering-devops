@@ -2,9 +2,9 @@
 # to allow Nginx handle more concurrent connections.
 
 
-# Uncomment the ULIMIT Value
+# delete existing ULIMIT and add another line
 exec { 'modify-nginx':
-  command => 'sed -i "s/^#[[:space:]]*ULIMIT=\"-n [0-9]*\"/ULIMIT=\"-n 4096\"/" /etc/default/nginx',
+  command => 'sed -i "/^#*[[:space:]]*ULIMIT=/d; $aULIMIT=\"-n 4096\"" /etc/default/nginx',
   path    => '/usr/local/bin/:/bin'
 }
 
