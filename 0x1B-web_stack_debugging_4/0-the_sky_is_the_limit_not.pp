@@ -4,7 +4,7 @@
 
 # Uncomment the ULIMIT Value
 exec { 'modify-nginx':
-  command => 'sed -i "s/^#[[:space:]]*ULIMIT/ULIMIT/" /etc/default/nginx',
+  command => 'sed -i "s/^#[[:space:]]*ULIMIT=\"-n [0-9]*\"/ULIMIT=\"-n 4096\"/" /etc/default/nginx',
   path    => '/usr/local/bin/:/bin'
 }
 
