@@ -10,7 +10,7 @@ def number_of_subscribers(subreddit):
     '''Retrieve the number of subscribers'''
 
     headers = {'User-Agent': 'app/v1.0.0'}
-    url = "https://reddit.com/r/{}/about.json".format(subreddit)
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
 
     # perform GET request to API without following redirect
     res = requests.get(url, headers=headers, allow_redirects=False)
