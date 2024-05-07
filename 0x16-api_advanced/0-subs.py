@@ -13,7 +13,8 @@ def number_of_subscribers(subreddit):
     url = "https://reddit.com/r/{}/about.json".format(subreddit)
 
     # perform GET request to API without following redirect
-    res = requests.get(url, headers=headers, allow_redirects=False)
+    res = requests.get(url, headers=headers, allow_redirects=True)
+
     if (res.status_code == 200):
         # print the number of subscribers
         data = res.json().get('data', {})
