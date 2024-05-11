@@ -1,4 +1,5 @@
 # SSL Certificate Chaos 🛠️
+![SSL certificate issue](https://imgflip.com/i/8pqi31)
 
 ## What Happened?
 
