@@ -1,5 +1,5 @@
 # SSL Certificate Chaos 🛠️
-![SSL certificate issue](https://imgflip.com/i/8pqi31)
+![SSL certificate issue](https://github.com/julioceaseless/alx-system_engineering-devops/blob/main/assets/8pqi31.jpg)
 
 ## What Happened?
 
