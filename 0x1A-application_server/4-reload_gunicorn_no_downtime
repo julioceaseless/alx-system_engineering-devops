@@ -21,7 +21,7 @@ check_and_append_exec_reload() {
 # Function to reload the Gunicorn service
 reload_gunicorn_service() {
   echo "Reloading Gunicorn service..."
-  if sudo systemctl reload gunicorn; then
+  if sudo systemctl restart gunicorn; then
     echo "Gunicorn service reloaded successfully."
   else
     echo "Failed to reload Gunicorn service."
