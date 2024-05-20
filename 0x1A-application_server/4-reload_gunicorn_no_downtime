@@ -1,18 +1,36 @@
 #!/usr/bin/env bash
 # This script attempts to reload gunicorn without application downtime
 
-SERVICE_NAME="gunicorn.service"
+SERVICE_FILE="/etc/systemd/system/gunicorn.service"
 
-# Function to gracefully reload Gunicorn
-reload_gunicorn() {
-	echo "Reloading Gunicorn service gracefully..."
-	systemctl reload "$SERVICE_NAME"
+# Define the ExecReload line
+EXEC_RELOAD_LINE="ExecReload=/bin/kill -HUP \$MAINPID"
+
+# Function to check and append ExecReload line
+check_and_append_exec_reload() {
+  if grep -q "^$EXEC_RELOAD_LINE" "$SERVICE_FILE"; then
+    echo "ExecReload line already exists."
+  else
+    echo "Appending ExecReload line to the service file."
+    sudo sed -i "/ExecStart/ a $EXEC_RELOAD_LINE" "$SERVICE_FILE"
+    # Reload the systemd configuration to apply changes
+    sudo systemctl daemon-reload
+  fi
 }
 
-# Check if the service is running
-if systemctl is-active --quiet "$SERVICE_NAME"; then
-	reload_gunicorn
-else
-	echo "Gunicorn service is not running. Starting the service..."
-	systemctl start "$SERVICE_NAME"
-fi
+# Function to reload the Gunicorn service
+reload_gunicorn_service() {
+  echo "Reloading Gunicorn service..."
+  if sudo systemctl reload gunicorn; then
+    echo "Gunicorn service reloaded successfully."
+  else
+    echo "Failed to reload Gunicorn service."
+  fi
+}
+
+# Check and append ExecReload line if necessary
+check_and_append_exec_reload
+
+# Reload the Gunicorn service
+reload_gunicorn_service
+
