@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Define the service name
+SERVICE_NAME="gunicorn.service"
+
+# Function to gracefully reload Gunicorn
+reload_gunicorn() {
+  echo "Reloading Gunicorn service gracefully..."
+  systemctl reload "$SERVICE_NAME"
+  if [ $? -eq 0 ]; then
+    echo "Gunicorn service reloaded successfully."
+  else
+    echo "Failed to reload Gunicorn service."
+  fi
+}
+
+# Check if the service is running
+if systemctl is-active --quiet "$SERVICE_NAME"; then
+  reload_gunicorn
+else
+  echo "Gunicorn service is not running. Starting the service..."
+  systemctl start "$SERVICE_NAME"
+  if [ $? -eq 0 ]; then
+    echo "Gunicorn service started successfully."
+  else
+    echo "Failed to start Gunicorn service."
+  fi
+fi
